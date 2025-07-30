@@ -8,7 +8,7 @@ const Header = () => {
   return (
     <div className="py-4 px-10 flex justify-between items-center shadow-md">
       <Link to={"/"}>
-        <img src="/logo.svg" alt="Logo" width={100} />
+        <img src="/logo.svg" alt="Logo" width={80} />
       </Link>
       {isSignedIn ? (
         <div className="flex items-center gap-4">
