@@ -6,9 +6,9 @@ import { UserButton, useUser } from "@clerk/clerk-react";
 const Header = () => {
   const { isSignedIn } = useUser();
   return (
-    <div className="py-4 px-10 flex justify-between items-center shadow-md">
+    <div className="py-4 p-10 md:px-20 lg:px-32 flex justify-between items-center shadow-md">
       <Link to={"/"}>
-        <img src="/logo.svg" alt="Logo" width={80} />
+        <h2 className="font-bold text-2xl">Resume_Builder</h2>
       </Link>
       {isSignedIn ? (
         <div className="flex items-center gap-4">

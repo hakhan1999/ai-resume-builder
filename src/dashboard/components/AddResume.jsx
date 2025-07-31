@@ -1,5 +1,5 @@
 import { Loader2, PlusSquare } from "lucide-react";
-import React, { use, useState } from "react";
+import React, { useState } from "react";
 import {
   Dialog,
   DialogContent,
@@ -12,12 +12,14 @@ import { Input } from "@/components/ui/input";
 import { v4 as uuidv4 } from "uuid";
 import globalApi from "../../../service/globalApi";
 import { useUser } from "@clerk/clerk-react";
+import { useNavigate } from "react-router-dom";
 
 const AddResume = () => {
   const [openDialog, setOpenDialog] = useState(false);
   const [resumeTitle, setResumeTitle] = useState("");
   const { user } = useUser();
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const onCreate = async () => {
     setLoading(true);
@@ -25,9 +27,9 @@ const AddResume = () => {
     const data = {
       data: {
         title: resumeTitle,
-        resumeId: uid,
-        userEmail: user?.primaryEmailAddress?.emailAddress,
-        userName: user?.fullName,
+        resume_Id: uid,
+        user_Email: user?.primaryEmailAddress?.emailAddress,
+        user_Name: user?.fullName,
       },
     };
     globalApi
@@ -36,6 +38,7 @@ const AddResume = () => {
         console.log(response);
         if (response) {
           setLoading(false);
+          navigate(`/dashboard/resume/${response.data.data.documentId}/edit`);
         }
       })
       .catch((error) => {
@@ -49,7 +52,7 @@ const AddResume = () => {
         onClick={() => {
           setOpenDialog(true);
         }}
-        className="py-24 border items-center justify-center flex bg-secondary rounded-lg h-[280px] hover:scale-105 transition-all duration-400 cursor-pointer hover:shadow-md"
+        className="py-24 border border-[#2F3037] items-center justify-center flex bg-secondary rounded-lg h-[280px] hover:scale-105 transition-all duration-400 cursor-pointer hover:shadow-md"
       >
         <PlusSquare />
       </div>
@@ -60,7 +63,7 @@ const AddResume = () => {
             <p>Add tilte for your new resume</p>
             <DialogDescription>
               <Input
-                className="mt-2"
+                className="mt-2 text-black"
                 placeholder="Full Stack Developer Resume"
                 onChange={(e) => setResumeTitle(e.target.value)}
               />
