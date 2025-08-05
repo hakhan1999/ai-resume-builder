@@ -4,10 +4,10 @@ import React from "react";
 
 const Home = () => {
   return (
-    <div>
+    <>
       <Header />
-      Landing Screen
-    </div>
+      <div className="py-4 p-10 md:px-20 lg:px-15">Landing Screen</div>
+    </>
   );
 };
 

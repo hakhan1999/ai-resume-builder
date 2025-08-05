@@ -27,7 +27,7 @@ const AddResume = () => {
     const data = {
       data: {
         title: resumeTitle,
-        resume_Id: uid,
+        resumeId: uid,
         user_Email: user?.primaryEmailAddress?.emailAddress,
         user_Name: user?.fullName,
       },

@@ -31,7 +31,7 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="p-10 md:px-20 lg:px-32">
+    <div className="p-10 md:px-20 lg:px-15">
       <h2 className="font-bold text-3xl">My Resume</h2>
       <p>Start creating AI resume for your next job role</p>
 
